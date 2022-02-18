@@ -16,18 +16,19 @@ class streamList extends React.Component{
 
     renderedList(){
       return  Object.values(this.props.streams).map((stream)=>{
-            return(
+            return(<div>
+                {stream.userId === this.props.currentUserId && stream.userId? //i puted &&stream.userId cause in case of signed-out;both stream.userId and props.currentUserId are undefined and === will returns true and render buttons on items with no userId!
+
                 <li className="list-group-item" key={stream.id} style={this.style}>
                     <div className='contents'>
                         <h3><Link to={`streams/${stream.id}`}>{stream.title}</Link></h3>
                         <p className=''>{stream.description}</p>
                      </div>
-                        {stream.userId === this.props.currentUserId && stream.userId? //i puted &&stream.userId cause in case of signed-out;both stream.userId and props.currentUserId are undefined and === will returns true and render buttons on items with no userId!
                             <div className='buttons'>
                                 <Link to={`/streams/edit/${stream.id}`} className='btn btn-primary'>edit</Link>
                                 <Link to={`/streams/delete/${stream.id}`}  className='btn btn-danger'>delete</Link>
-                            </div>:null}
-                    </li>)
+                            </div>
+                    </li>:null}</div>)
         })
     }
 
