@@ -45,11 +45,24 @@ class streamList extends React.Component{
         })
     }
 
+    notSignedInMessage(){
+        return(
+        <div className="cantainer">
+        <h1>welcome to my note application</h1>
+        <h3>you must sign in via your google account to be able to add and view your notes</h3>
+        </div>)
+    }
+
+    signedInButNoNotes(){
+        
+    }
+
     render(){
         return (
             <div>
                 <h1>Notes:</h1>
                 <ul className="list-group">
+                    {!this.props.isSignedIn? this.notSignedInMessage():null}
                     {this.renderedList()}
                 </ul>
                 <br />
