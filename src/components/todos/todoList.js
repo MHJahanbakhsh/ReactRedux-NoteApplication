@@ -14,6 +14,18 @@ class streamList extends React.Component{
         justifyContent:'space-between'
     }
 
+    
+    add3Dots(string, limit){
+        var dots = " ...";
+    if(string.length > limit)
+    {
+    string = string.substring(0,limit) + dots;
+    }
+
+    return string
+    }
+
+
     renderedList(){
       return  Object.values(this.props.streams).map((stream)=>{
             return(<div>
@@ -21,12 +33,13 @@ class streamList extends React.Component{
 
                 <li className="list-group-item" key={stream.id} style={this.style}>
                     <div className='contents'>
-                        <h3><Link to={`streams/${stream.id}`}>{stream.title}</Link></h3>
-                        <p className=''>{stream.description}</p>
+                        <h3><Link to={`todo/${stream.id}`}>{stream.title}</Link></h3>
+                        <p className='notes-desc'>{this.add3Dots(stream.description,200)}</p>
+                        {stream.description.length>200? <Link to={`todo/${stream.id}`} >read more</Link>:null}
                      </div>
                             <div className='buttons'>
-                                <Link to={`/streams/edit/${stream.id}`} className='btn btn-primary'>edit</Link>
-                                <Link to={`/streams/delete/${stream.id}`}  className='btn btn-danger'>delete</Link>
+                                <Link to={`/todo/edit/${stream.id}`} className='btn btn-primary'>edit</Link>
+                                <Link to={`/todo/delete/${stream.id}`}  className='btn btn-danger'>delete</Link>
                             </div>
                     </li>:null}</div>)
         })
@@ -35,11 +48,12 @@ class streamList extends React.Component{
     render(){
         return (
             <div>
-                <h1>streams:</h1>
+                <h1>Notes:</h1>
                 <ul className="list-group">
                     {this.renderedList()}
                 </ul>
-                {this.props.isSignedIn ? <Link to='/streams/new' className='btn btn-primary btn-lg' style={{float:'right'}}>Create stream</Link>:null}
+                <br />
+                {this.props.isSignedIn ? <Link to='/todo/new' className='btn btn-primary btn-lg' style={{float:'right'}}>Create Note</Link>:null}
             </div>
         )
     }

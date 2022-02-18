@@ -23,10 +23,10 @@ const App = ()=>{
             <Header/>
             <Switch>
                 <Route path='/' exact component={streamList}/>  {/*becuase in above ;we pass these components,each component has some default props provided by reacr router;like:history,location,match.. */}
-                <Route path='/streams/new'  component={streamCreate}/>
-                <Route path='/streams/edit/:id'  component={streamEdit}/>{/*special charachter is ":" and we could say anything instead of id .whatever we say will be the key of the match params in props for that component*/}
-                <Route path='/streams/delete/:id'  component={StreamDelete}/>
-                <Route path='/streams/:id'  component={streamShow}/>
+                <Route path='/todo/new'  component={streamCreate}/>
+                <Route path='/todo/edit/:id'  component={streamEdit}/>{/*special charachter is ":" and we could say anything instead of id .whatever we say will be the key of the match params in props for that component*/}
+                <Route path='/todo/delete/:id'  component={StreamDelete}/>
+                <Route path='/todo/:id'  component={streamShow}/>
             </Switch>
         </Router>
     </div>

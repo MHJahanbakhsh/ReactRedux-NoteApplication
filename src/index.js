@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore , applyMiddleware , compose} from 'redux';
 import App from './components/App';
 import reducers from './reducers';
-import reduxThunk from 'redux-thunk'
-
+import reduxThunk from 'redux-thunk';
+import '../src/styles/style.css';
 
 //for redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

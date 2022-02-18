@@ -14,8 +14,8 @@ const StreamDelete= (props)=>{
 
 
     return <MyModal
-        title='Delete Stream'
-        content={`do you want to delete stream with id ${id}`}
+        title='Delete Note'
+        content={`do you want to delete Note with id ${id}`}
         onDeleteClick={()=>props.deleteStream(id)}/>
 }
 

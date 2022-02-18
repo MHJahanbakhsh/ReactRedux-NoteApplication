@@ -1,0 +1,9 @@
+.notes-desc{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    display: inline;
+}
+
+.contents{
+    width: 80%;
+}
