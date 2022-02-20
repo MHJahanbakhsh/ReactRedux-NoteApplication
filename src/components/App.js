@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter , Route ,Router ,Switch} from 'react-router-dom'; //BrowserRouter is mostly for Before creating our custom history objects and has no use anymore
-import streamCreate from './todos/todoCreate';
-import streamEdit from './todos/todoEdit';
-import StreamDelete from './todos/todoDelete';
-import streamList from './todos/todoList';
-import streamShow from './todos/todoShow';
+import streamCreate from './todos/NoteCreate';
+import streamEdit from './todos/NoteEdit';
+import StreamDelete from './todos/NoteDelete';
+import streamList from './todos/NoteList';
+import streamShow from './todos/NoteShow';
 import Header from './Header';
 import history from '../history';
 
@@ -17,7 +17,7 @@ import history from '../history';
 becuase with anchor tag browser will dump old html and all states  */
 
 const App = ()=>{
-    return <div className='container'>
+    return <div className='app'>
         
         <Router history={history}>
             <Header/>

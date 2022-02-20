@@ -84,10 +84,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStream } from '../../actions';
-import StreamForm from './todoForm'
+import { createNote } from '../../actions';
+import NoteForm from './NoteForm'
 
-class streamCreate extends React.Component{
+class NoteCreate extends React.Component{
     constructor(props){
         super(props);
         this.createOnSubmit = this.createOnSubmit.bind(this)
@@ -98,12 +98,12 @@ class streamCreate extends React.Component{
 
     createOnSubmit(formValues){        
         
-        this.props.createStream(formValues)
+        this.props.createNote(formValues)
     }
 
     
     render(){ 
-        return <StreamForm  onSubmit={this.createOnSubmit} />
+        return <NoteForm  onSubmit={this.createOnSubmit} />
     }
 
   
@@ -114,4 +114,4 @@ class streamCreate extends React.Component{
 
 
 
-export default connect(null,{createStream})(streamCreate)
+export default connect(null,{createNote})(NoteCreate)

@@ -14,7 +14,7 @@ export function signOut(){
     }
 }
 
-export function createStream(formValues){
+export function createNote(formValues){
     return async function(dispatch,getState){
         const {userId} = getState().auth
        const response = await streams.post('/todos',{...formValues,userId});
@@ -25,21 +25,21 @@ export function createStream(formValues){
     }
 }
 
-export const fetchStreams = () => async dispatch => {
+export const fetchNotes = () => async dispatch => {
     const response = await streams.get('/todos');
-    console.log(response.data)
+    // console.log(response.data)
     dispatch({ type: 'FETCH_STREAMS', payload: response.data });
     
   };
 
-export const fetchStream = id => async dispatch => {
+export const fetchNote = id => async dispatch => {
     const response = await streams.get(`/todos/${id}`);
   
     dispatch({ type: 'FETCH_STREAM', payload: response.data });
   };
 
 
-export function editStream(id,formValues){
+export function editNote(id,formValues){
     return async function(dispatch){
         const response = await streams.patch(`/todos/${id}`,formValues);
 
@@ -49,7 +49,7 @@ export function editStream(id,formValues){
 
 }
 
-export function deleteStream(id){
+export function deleteNote(id){
     return async function(dispatch){
         await streams.delete(`/todos/${id}`) //there is no response
         

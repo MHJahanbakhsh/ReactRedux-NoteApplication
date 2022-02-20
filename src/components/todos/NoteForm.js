@@ -3,7 +3,7 @@ import {Field,reduxForm} from 'redux-form' //Field is a component and reduxForm 
 //we use Field,anytime we wants to have some kind of input(ex:input,checkbox,radio,dropdown...)
 //in automating redux behind the scenes stuff for form,Field is essential and is a must have thing
 
-class StreamForm extends React.Component{
+class NoteForm extends React.Component{
     constructor(props){
         super(props);
         this.myOnSubmit = this.myOnSubmit.bind(this)
@@ -30,7 +30,7 @@ class StreamForm extends React.Component{
     
     //handleSubmit is speacial prop function added by redux form
     render(){ //component attr in Field is either a react component or a function for Field to call.this func or comp needs to return some element to show on screen
-        return <form onSubmit={this.props.handleSubmit(this.myOnSubmit)}> 
+        return <form className='container' onSubmit={this.props.handleSubmit(this.myOnSubmit)}> 
             <Field name='title' component={this.toRender} label='Enter Title' id='field1'/> 
             <Field name='description' component={this.toRender} label='Enter Description' id='field2'/> 
             <button className='btn btn-primary btn-lg'>Submit</button>
@@ -61,9 +61,9 @@ function validate(formValues){
 /*becuase reduxForm does all the bts work for us,after wiring it to your
 component ,by default it will pass tremendous number of props*/
 const formWrapped =  reduxForm({
-    form:'streamForm',
+    form:'noteForm',
     validate:validate //this is how we wireup our validation .validate is speacial key.ALSO there is another way of validation which each Field has its own specific typeof validation this way called:Field-Level Validation  
-})(StreamForm)
+})(NoteForm)
 
 export default formWrapped //in the case of code re-using streamForm 
 //does not need to call any action creator.its up to parent component.so we dont need connect function at all!

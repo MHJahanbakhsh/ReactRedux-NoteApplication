@@ -1,11 +1,11 @@
 import React from 'react';
-import { fetchStreams } from '../../actions';
+import { fetchNotes } from '../../actions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-class streamList extends React.Component{
+class NoteList extends React.Component{
     componentDidMount(){
-        this.props.fetchStreams() //its really important that we call this action from props.not directly.becuase otherwise it wont dispatcch automatically by connect()
+        this.props.fetchNotes() //its really important that we call this action from props.not directly.becuase otherwise it wont dispatcch automatically by connect()
     }
 
     style = {
@@ -28,18 +28,17 @@ class streamList extends React.Component{
 
     renderedList(){
       return  Object.values(this.props.streams).map((stream)=>{
-            return(<div>
+            return(<div key={stream.id}>
                 {stream.userId === this.props.currentUserId && stream.userId? //i puted &&stream.userId cause in case of signed-out;both stream.userId and props.currentUserId are undefined and === will returns true and render buttons on items with no userId!
-
-                <li className="list-group-item" key={stream.id} style={this.style}>
+                <li className="list-group-item"  style={this.style}>
                     <div className='contents'>
                         <h3><Link to={`todo/${stream.id}`}>{stream.title}</Link></h3>
                         <p className='notes-desc'>{this.add3Dots(stream.description,200)}</p>
                         {stream.description.length>200? <Link to={`todo/${stream.id}`} >read more</Link>:null}
                      </div>
                             <div className='buttons'>
-                                <Link to={`/todo/edit/${stream.id}`} className='btn btn-primary'>edit</Link>
-                                <Link to={`/todo/delete/${stream.id}`}  className='btn btn-danger'>delete</Link>
+                                <Link to={`/todo/edit/${stream.id}`} className='btn btn-primary'>Edit</Link>
+                                <Link to={`/todo/delete/${stream.id}`}  className='btn btn-danger'>Delete</Link>
                             </div>
                     </li>:null}</div>)
         })
@@ -47,22 +46,35 @@ class streamList extends React.Component{
 
     notSignedInMessage(){
         return(
-        <div className="cantainer">
+        <div style={{textAlign:'center'}} >
         <h1>welcome to my note application</h1>
         <h3>you must sign in via your google account to be able to add and view your notes</h3>
         </div>)
     }
 
     signedInButNoNotes(){
-        
+        let notewithThisUSer = false
+        if(this.props.isSignedIn){
+            for(let i of Object.values(this.props.streams)){
+                if(i.userId === this.props.currentUserId){
+                   notewithThisUSer = true
+                }
+            }
+            if (!notewithThisUSer){
+                return <h3>not note has been added yet</h3>
+            }
+            
+        }
+        return null
     }
 
     render(){
         return (
-            <div>
+            <div className='container'>
                 <h1>Notes:</h1>
                 <ul className="list-group">
                     {!this.props.isSignedIn? this.notSignedInMessage():null}
+                    {this.signedInButNoNotes()}
                     {this.renderedList()}
                 </ul>
                 <br />
@@ -73,7 +85,7 @@ class streamList extends React.Component{
 }
 
 function mapStateToProps(state){
-console.log('state: ',state)
+// console.log('state: ',state)
 return {
     streams:state.stream,
     currentUserId:state.auth.userId,
@@ -81,4 +93,4 @@ return {
     }
 }
 
-export default connect(mapStateToProps,{fetchStreams})(streamList)
+export default connect(mapStateToProps,{fetchNotes})(NoteList)

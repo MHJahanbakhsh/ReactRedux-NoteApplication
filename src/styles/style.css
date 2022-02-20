@@ -7,3 +7,17 @@
 .contents{
     width: 80%;
 }
+
+body{
+    background-image: linear-gradient(#b7e4c7,#081c15);
+}
+
+.navbar{
+    background-color: #d6f7e1;
+    width:100vmax;
+    overflow-x: visible;
+}
+
+.list-group-item{
+    background-color: white;
+}

@@ -1,22 +1,22 @@
 import React from 'react';
 import MyModal from '../Modal';
 import { useEffect } from 'react';
-import { fetchStream , deleteStream } from '../../actions';
+import { fetchNote , deleteNote } from '../../actions';
 import { connect } from 'react-redux';
 
-const StreamDelete= (props)=>{
+const NoteDelete= (props)=>{
     useEffect(myFunc,[])
     const {id} =props.match.params
 
     function myFunc(){
-        props.fetchStream(id)
+        props.fetchNote(id)
     }
 
 
     return <MyModal
         title='Delete Note'
         content={`do you want to delete Note with id ${id}`}
-        onDeleteClick={()=>props.deleteStream(id)}/>
+        onDeleteClick={()=>props.deleteNote(id)}/>
 }
 
-export default connect(null,{fetchStream,deleteStream})(StreamDelete)
+export default connect(null,{fetchNote,deleteNote})(NoteDelete)

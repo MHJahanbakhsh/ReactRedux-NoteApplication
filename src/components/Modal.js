@@ -11,7 +11,7 @@ import history from '../history';
  so i busted my ass off to find a way to trigerring modal on component load ,while using bootstrap cdn and
  traditional jsx and classes.but nothing worked out.so i had to install react-bootstrap via npm.but by the looks of it
  it does not offer those out of the box functionality like clicking outside of modal to be closed
- and we have to do it manually in component like stephan did with semantic ui
+ and we have to do it manually in component.
  by the way showing modal by default in react-bootstrap is as simple as show={true} attr in Modal component*/
 const MyModal = (props)=>{
 
