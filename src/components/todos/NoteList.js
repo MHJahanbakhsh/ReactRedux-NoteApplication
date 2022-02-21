@@ -27,18 +27,18 @@ class NoteList extends React.Component{
 
 
     renderedList(){
-      return  Object.values(this.props.streams).map((stream)=>{
-            return(<div key={stream.id}>
-                {stream.userId === this.props.currentUserId && stream.userId? //i puted &&stream.userId cause in case of signed-out;both stream.userId and props.currentUserId are undefined and === will returns true and render buttons on items with no userId!
+      return  Object.values(this.props.notes).map((note)=>{
+            return(<div key={note.id}>
+                {note.userId === this.props.currentUserId && note.userId? //i puted &&note.userId cause in case of signed-out;both note.userId and props.currentUserId are undefined and === will returns true and render buttons on items with no userId!
                 <li className="list-group-item"  style={this.style}>
                     <div className='contents'>
-                        <h3><Link to={`todo/${stream.id}`}>{stream.title}</Link></h3>
-                        <p className='notes-desc'>{this.add3Dots(stream.description,200)}</p>
-                        {stream.description.length>200? <Link to={`todo/${stream.id}`} >read more</Link>:null}
+                        <h3><Link to={`todo/${note.id}`}>{note.title}</Link></h3>
+                        <p className='notes-desc'>{this.add3Dots(note.description,200)}</p>
+                        {note.description.length>200? <Link to={`todo/${note.id}`} >read more</Link>:null}
                      </div>
                             <div className='buttons'>
-                                <Link to={`/todo/edit/${stream.id}`} className='btn btn-primary'>Edit</Link>
-                                <Link to={`/todo/delete/${stream.id}`}  className='btn btn-danger'>Delete</Link>
+                                <Link to={`/todo/edit/${note.id}`} className='btn btn-primary'>Edit</Link>
+                                <Link to={`/todo/delete/${note.id}`}  className='btn btn-danger'>Delete</Link>
                             </div>
                     </li>:null}</div>)
         })
@@ -55,7 +55,7 @@ class NoteList extends React.Component{
     signedInButNoNotes(){
         let notewithThisUSer = false
         if(this.props.isSignedIn){
-            for(let i of Object.values(this.props.streams)){
+            for(let i of Object.values(this.props.notes)){
                 if(i.userId === this.props.currentUserId){
                    notewithThisUSer = true
                 }
@@ -87,7 +87,7 @@ class NoteList extends React.Component{
 function mapStateToProps(state){
 // console.log('state: ',state)
 return {
-    streams:state.stream,
+    notes:state.note,
     currentUserId:state.auth.userId,
     isSignedIn:state.auth.isSignedIn //we could use userId instead of isSignedIn because when user is not signed in,the userId is undefined but isSignedIn is more declarative and its sole purpose is to define the user is signed in or not.so we use that
     }

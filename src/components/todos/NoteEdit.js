@@ -2,17 +2,17 @@
 
 // import React from 'react';
 // import {connect} from 'react-redux';
-// import { fetchStream , editStream } from '../../actions';
+// import { fetchnote , editnote } from '../../actions';
 
-// class streamEdit extends React.Component{
+// class noteEdit extends React.Component{
 
 //     componentDidMount(){
-//         this.props.fetchStream(this.props.match.params.id);
+//         this.props.fetchnote(this.props.match.params.id);
 //         console.log(this.props)
 //     }
 
 //     render(){
-//         return <div>stream Edit</div>
+//         return <div>note Edit</div>
 //     }
 // }
 
@@ -20,10 +20,10 @@
 //     /*this is one of the rare cases that part of our data is on state and another part in props
 //     and we need that part in props to access correctly that part in state
 //      */
-//     return {stream:state.stream[ownProps.match.params.id]}
+//     return {note:state.note[ownProps.match.params.id]}
 // }
 
-// export default connect(mapStateToProps,{fetchStream})(streamEdit);
+// export default connect(mapStateToProps,{fetchnote})(noteEdit);
 
 
 // -----------------AFTER CODE REUSE--------------------
@@ -34,7 +34,7 @@ import {connect} from 'react-redux';
 import { fetchNote , editNote } from '../../actions';
 import NoteForm from './NoteForm'
 
-class streamEdit extends React.Component{
+class NoteEdit extends React.Component{
 
     componentDidMount(){
         this.props.fetchNote(this.props.match.params.id)
@@ -49,13 +49,13 @@ class streamEdit extends React.Component{
     
 
     render(){
-        if(this.props.stream){ //very IMPORTANT note: dont try use conditional for initial values.it wont work.we have to make our 
-            //whole return statement to wait for fetchStream response and updating the props afterward.if you do something like this: initialValues = {{}?felan:null} wont work
+        if(this.props.note){ //very IMPORTANT note: dont try use conditional for initial values.it wont work.we have to make our 
+            //whole return statement to wait for fetchnote response and updating the props afterward.if you do something like this: initialValues = {{}?felan:null} wont work
         // console.log('props: ',this.props)
         return(
         <>
-            <h3 className='container'>Edit Stream</h3>
-            <NoteForm onSubmit={this.editOnSubmit} initialValues={{title:this.props.stream.title,description:this.props.stream.description}}/>
+            <h3 className='container'>Edit Note</h3>
+            <NoteForm onSubmit={this.editOnSubmit} initialValues={{title:this.props.note.title,description:this.props.note.description}}/>
         </>)
     }
     return <div>loading</div>}
@@ -66,7 +66,7 @@ function mapStateToProps(state,ownProps){
     /*this is one of the rare cases that part of our data is on state and another part in props
     and we need that part in props to access correctly that part in state
      */
-    return {stream:state.stream[ownProps.match.params.id]}
+    return {note:state.note[ownProps.match.params.id]}
 }
 
-export default connect(mapStateToProps,{fetchNote,editNote})(streamEdit);
+export default connect(mapStateToProps,{fetchNote,editNote})(NoteEdit);

@@ -22,17 +22,17 @@ function authReducer(state=INITIAL_STATE,action){
 }
 
 
-function streamReducer(state={},action){
+function noteReducer(state={},action){
     switch(action.type){
-        case 'EDIT-STREAM':
+        case 'EDIT-NOTE':
             return {...state ,[action.payload.id]:action.payload} //this is called key interpolation
-        case'CREATE_STREAM':
+        case'CREATE_NOTE':
             return {...state , [action.payload.id]:action.payload}
-        case 'FETCH_STREAM':
+        case 'FETCH_NOTE':
             return {...state , [action.payload.id]:action.payload}
-        case 'FETCH_STREAMS':
+        case 'FETCH_NOTES':
             return {...state , ..._.mapKeys(action.payload,'id')}
-        case 'DELETE_STREAM':
+        case 'DELETE_NOTE':
             return _.omit(state,action.payload);//becuase payload is the id itself(look at actions) we dont have to say payload.id
             //also omit does not change previous object.it returns a new one
         default:
@@ -61,6 +61,6 @@ function streamReducer(state=[],action){
 export default combineReducers({
     auth:authReducer,
     form:formReducer,
-    stream:streamReducer
+    note:noteReducer
 })
 

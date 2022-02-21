@@ -10,10 +10,10 @@ const NoteShow = (props)=>{
     useEffect(()=>props.fetchNote(id),[])
 
     function renderedContent(){
-        if(props.stream){
-            return <div>
-                        <h2>Title : {props.stream.title}</h2>
-                        <p>Content : {props.stream.description}</p>
+        if(props.note){
+            return <div className='container card'>
+                        <h2 className='card-title'>Title : {props.note.title}</h2>
+                        <p className='card-text'>Content : {props.note.description}</p>
                     </div>
         }else return null
     }
@@ -24,7 +24,7 @@ const NoteShow = (props)=>{
 
 function mapStateToProps(state,ownProps){
     console.log(state)
-    return {stream:state.stream[ownProps.match.params.id]}
+    return {note:state.note[ownProps.match.params.id]}
 }
 
 export default connect(mapStateToProps,{fetchNote})(NoteShow)
