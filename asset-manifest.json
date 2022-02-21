@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ReactRedux-NoteApplication/static/css/main.4152838f.chunk.css",
+    "main.js": "/ReactRedux-NoteApplication/static/js/main.0d4ca847.chunk.js",
+    "main.js.map": "/ReactRedux-NoteApplication/static/js/main.0d4ca847.chunk.js.map",
+    "runtime-main.js": "/ReactRedux-NoteApplication/static/js/runtime-main.25e3e233.js",
+    "runtime-main.js.map": "/ReactRedux-NoteApplication/static/js/runtime-main.25e3e233.js.map",
+    "static/js/2.02c74742.chunk.js": "/ReactRedux-NoteApplication/static/js/2.02c74742.chunk.js",
+    "static/js/2.02c74742.chunk.js.map": "/ReactRedux-NoteApplication/static/js/2.02c74742.chunk.js.map",
+    "index.html": "/ReactRedux-NoteApplication/index.html",
+    "static/css/main.4152838f.chunk.css.map": "/ReactRedux-NoteApplication/static/css/main.4152838f.chunk.css.map",
+    "static/js/2.02c74742.chunk.js.LICENSE.txt": "/ReactRedux-NoteApplication/static/js/2.02c74742.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.25e3e233.js",
+    "static/js/2.02c74742.chunk.js",
+    "static/css/main.4152838f.chunk.css",
+    "static/js/main.0d4ca847.chunk.js"
+  ]
+}
