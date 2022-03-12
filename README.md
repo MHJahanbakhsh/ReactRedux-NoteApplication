@@ -16,4 +16,4 @@ a fully functional note application(including authentication and all CRUD tasks)
 * you must sign in via your google acount to be able to use app
 * for simplicity and solely focus on frontend logic i used `JSON-server` as backend.changes on json database is not consistent and gets reset after a while.so keep that in mind
 
-### [visit app](https://react-redux-note.herokuapp.com/)
+### [visit app](https://thirsty-villani-8f7cb1.netlify.app)
